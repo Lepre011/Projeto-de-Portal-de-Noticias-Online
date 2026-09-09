@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gazeta Hoje — Navegação</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="portal-noticias.css">
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="utility-bar">
+    <div class="wrap">
+      <div class="utility-left">
+        <span id="fullDate">Quinta-feira, 27 de agosto de 2026</span>
+        <span class="edition">Edição nº 2.847</span>
+        <span class="utility-clock" id="clock">—:—</span>
+      </div>
+      <div class="indices" aria-label="Indicadores de mercado">
+        <span>IBOV <span class="idx-up">132.480 ▲0,8%</span></span>
+        <span>USD <span class="idx-down">R$ 5,32 ▼0,2%</span></span>
+        <span>EUR <span class="idx-up">R$ 5,78 ▲0,1%</span></span>
+      </div>
+      <div class="utility-right">
+        <span class="weather-chip">São Paulo · 21°C · parcialmente nublado</span>
+        <a href="#assinar">Entrar</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="masthead">
+    <div class="wrap">
+      <a class="brand" href="#" aria-label="Gazeta Hoje, página inicial">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>
+          <span class="brand-word">GAZETA <span class="hoje">HOJE</span></span>
+          <span class="brand-tagline">Jornalismo independente · fundado em 1994</span>
+        </span>
+      </a>
+      <div class="masthead-actions">
+        <button class="icon-btn" aria-label="Buscar notícias">⌕</button>
+        <button class="subscribe-btn" id="assinar">Assinar</button>
+        <button class="hamburger" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="primaryNav"><span></span></button>
+      </div>
+    </div>
+  </div>
+
+  <nav class="primary-nav" id="primaryNav">
+    <div class="wrap">
+      <ul class="nav-list">
+        <li><a href="#" class="is-active">Início</a></li>
+        <li><a href="#politica">Política</a></li>
+        <li><a href="#economia">Economia</a></li>
+        <li><a href="#mundo">Mundo</a></li>
+        <li><a href="#esportes">Esportes</a></li>
+        <li><a href="#cultura">Cultura</a></li>
+        <li><a href="#tecnologia">Tecnologia</a></li>
+        <li><a href="#opiniao">Opinião</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="ticker">
+    <div class="ticker-inner">
+      <div class="ticker-label"><span class="live-dot" aria-hidden="true"></span><span class="txt">Última hora</span></div>
+      <div class="ticker-viewport">
+        <div class="ticker-track" id="tickerTrack">
+          <div class="ticker-set">
+            <a class="ticker-item" href="#">Governo anuncia pacote de medidas para reconstrução após temporais no Sul</a>
+            <a class="ticker-item" href="#">Corte de energia atinge bairros da zona leste após temporal</a>
+            <a class="ticker-item" href="#">Bolsas internacionais operam em alta nesta quinta-feira</a>
+          </div>
+          <div class="ticker-set" aria-hidden="true">
+            <a class="ticker-item" href="#" tabindex="-1">Governo anuncia pacote de medidas para reconstrução após temporais no Sul</a>
+            <a class="ticker-item" href="#" tabindex="-1">Corte de energia atinge bairros da zona leste após temporal</a>
+            <a class="ticker-item" href="#" tabindex="-1">Bolsas internacionais operam em alta nesta quinta-feira</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Clock
+  (function(){
+    var el = document.getElementById('clock');
+    function tick(){
+      var d = new Date();
+      var hh = String(d.getHours()).padStart(2,'0');
+      var mm = String(d.getMinutes()).padStart(2,'0');
+      el.textContent = hh + ':' + mm;
+    }
+    tick();
+    setInterval(tick, 1000 * 15);
+  })();
+
+  // Mobile nav toggle
+  (function(){
+    var btn = document.getElementById('navToggle');
+    var nav = document.getElementById('primaryNav');
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  })();
+
+  // Sticky header shadow on scroll
+  (function(){
+    var header = document.getElementById('siteHeader');
+    window.addEventListener('scroll', function(){
+      header.classList.toggle('is-scrolled', window.scrollY > 8);
+    }, { passive: true });
+  })();
+</script>
+
+</body>
+</html>
